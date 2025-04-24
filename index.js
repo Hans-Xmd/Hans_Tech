@@ -17,7 +17,9 @@ const app = express()
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+
   res.setHeader('Pragma', 'no-cache')
+
   res.setHeader('Expires', '0')
   next()
 })
@@ -149,26 +151,10 @@ async function startnigg(phone) {
           await negga.sendMessage(
             negga.user.id,
             {
-              text: '*╭──────────────━┈⊷*\n*║Hans Xmd*\n*╰───────────────━⊷*\n\n*╭─────────────━┈⊷*\n║ᴏᴡɴᴇʀ: HansTz\n*╰─────────────━┈⊷*\n\n*ᴛʜᴀɴᴋs ғᴏʀ ᴄʜᴏᴏsɪɴɢ Hans-Xmd*',
+              text: '*╭──────────────━┈⊷*\n*║HansXmd sᴇssɪᴏɴ ɪᴅ*\n*╰───────────────━⊷*\n\n*╭─────────────━┈⊷*\n║ᴏᴡɴᴇʀ: HansTz\n*╰─────────────━┈⊷*\n\n*ᴛʜᴀɴᴋs ғᴏʀ ᴄʜᴏᴏsɪɴɢ Hans-Xmd*',
             },
             { quoted: guru }
           )
-
-          // >>>> Send the song file <<<<
-          try {
-            await negga.sendMessage(
-              negga.user.id,
-              {
-                : fs.readFileSync('./HansTz.mp3'),
-                : 'audio/mp4',
-                mimetype: 'audio/mp4',
-                ptt: false
-              }
-            )
-            console.log('Song sent successfully!')
-          } catch (err) {
-            console.error('Failed to send song:', err)
-          }
 
           console.log('Connected to WhatsApp Servers')
 
