@@ -1,5 +1,5 @@
 {
-    "description": "popkid xmd-session-scanner",
+    "description": "HansTech xmd-session-scanner",
     "main": "./HansTz.js",
   "engines" : { 
     "npm" : ">=9.7.2",
@@ -8,7 +8,7 @@
     "scripts": {
     "start": "node HansTz.js"
   },
-  "author": "popkid",
+  "author": "HansTech",
    "license": "",
    "dependencies": {
         "@hapi/boom": "^10.0.1",
