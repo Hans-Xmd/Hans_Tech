@@ -2,122 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HANSTZ PAIR</title>
-  <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HANS PAIR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"/>
   <style>
-    body {
+    * {
       margin: 0;
-      overflow: hidden;
-      font-family: 'Graduate', sans-serif;
-      color: white;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: url('https://files.catbox.moe/mn835l.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       min-height: 100vh;
-      background: black;
     }
 
-    #background-video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-    }
-
-    .container {
-      background: rgba(0, 0, 0, 0.6);
+    .card {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
       border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-      max-width: 400px;
       width: 90%;
-      z-index: 1;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      border: 2px solid transparent;
+      animation: glow 3s infinite alternate;
+      text-align: center;
     }
 
-    h3 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #ffccff;
-      text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc;
-    }
-
-    .input-container {
-      display: flex;
-      background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffff);
-      border-radius: 20px;
-      padding: 5px;
-      animation: pulse 3s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 10px #ff00cc, 0 0 20px #3333ff, 0 0 30px #00ffff;
+    @keyframes glow {
+      0% {
+        border-color: #00ffff;
+        box-shadow: 0 0 10px #00ffff;
       }
-      50% {
-        box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00cc, 0 0 40px #3333ff;
+      100% {
+        border-color: #ff00ff;
+        box-shadow: 0 0 20px #ff00ff;
       }
     }
 
-    .input-container input {
-      flex: 3;
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #ff66cc;
+      transition: color 1s ease-in-out; /* Smooth color transition */
+    }
+
+    input {
       padding: 15px;
       border: none;
-      border-radius: 20px 0 0 20px;
-      background-color: #000000cc;
-      color: white;
-      font-size: 16px;
+      border-radius: 10px 0 0 10px;
       outline: none;
+      width: 70%;
+      background: #222;
+      color: #fff;
     }
 
-    .input-container button {
-      flex: 1;
+    button {
       padding: 15px;
       border: none;
-      border-radius: 0 20px 20px 0;
+      border-radius: 0 10px 10px 0;
       background: #00ffcc;
       color: black;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
 
-    .input-container button:hover {
+    button:hover {
       background: #ff66ff;
       color: white;
     }
 
-    #loading-spinner {
-      margin-top: 10px;
-      display: none;
-    }
-
-    .fa-spinner {
-      animation: spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0); }
-      100% { transform: rotate(360deg); }
-    }
-
     #pair {
-      margin-top: 15px;
+      margin-top: 20px;
+    }
+
+    .copy-style {
+      cursor: pointer;
+      font-weight: bold;
+      color: #00ccff;
     }
 
     #play-btn {
       margin-top: 20px;
       padding: 12px 25px;
-      border: none;
       background: #6600ff;
       color: white;
-      font-weight: bold;
+      border: none;
       border-radius: 15px;
       cursor: pointer;
       box-shadow: 0 0 15px #6600ff;
@@ -130,45 +107,31 @@
     }
 
     footer {
-      margin-top: auto;
-      padding: 10px;
-      text-align: center;
-      color: #ccc;
+      margin-top: 30px;
       font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <video autoplay muted loop id="background-video">
-    <source src="https://files.catbox.moe/lso28c.mp4" type="video/mp4" />
-    Your browser does not support HTML5 video.
-  </video>
-
-  <div class="container">
-    <h3>🧋 HANS PAIR SITE 🧋</h3>
-    <p>Enter your phone number with country code:</p>
-    <div class="input-container">
-      <input placeholder="+25473229×××" type="number" id="number" />
+  <div class="card">
+    <h1 id="title"> HANS-TZ_TECH-PAIR </h1>
+    <p>Enter your WhatsApp number with country code:</p>
+    <div style="display: flex; margin-top: 15px;">
+      <input type="number" id="number" placeholder="+255..." />
       <button id="submit">Code</button>
     </div>
-    <div id="loading-spinner">
-      <i class="fas fa-spinner fa-spin"></i>
-    </div>
-    <main id="pair"></main>
+    <div id="pair"></div>
     <button id="play-btn">Play Song</button>
+    <footer>THANKS FOR CHOOSING</footer>
   </div>
 
   <audio id="audio-player">
-    <source src="https://files.catbox.moe/6xwyjs.m4a" type="audio/mpeg" />
-    Your browser does not support the audio element.
+    <source src="https://github.com/Hans-Xmd/Hans_Tech/raw/refs/heads/main/HansTz.mp3" type="audio/mpeg" />
+    Your browser does not support audio playback.
   </audio>
 
-  <footer>
-    HANS-XMD MADE BY HANS
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");
@@ -176,17 +139,24 @@
     let isSubmitting = false;
     let isCodeDisplayed = false;
 
+    // Function to change the color of the title slowly
+    function changeTitleColor() {
+      const colors = ['#ff66cc', '#ffccff', '#00ffcc', '#ff00ff', '#00ffff', '#ff6600'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.getElementById("title").style.color = randomColor;
+    }
+
+    setInterval(changeTitleColor, 2000); // Change color every 2 seconds
+
     async function Copy() {
       let text = document.getElementById("copy").innerText;
       let obj = document.getElementById("copy");
       await navigator.clipboard.writeText(obj.innerText.replace(' ', ''));
       obj.innerText = "CODE COPIED";
-      obj.style = "color:blue;font-weight:bold";
-      obj.size = "5";
+      obj.style = "color:lime;font-weight:bold";
       setTimeout(() => {
         obj.innerText = text;
-        obj.style = "color:black;font-weight-bold";
-        obj.size = "5";
+        obj.style = "color:#00ccff;font-weight:bold";
       }, 500);
     }
 
@@ -194,64 +164,58 @@
       e.preventDefault();
 
       if (isCodeDisplayed) {
-        alert("Please wait for 2 minutes before requesting a new code.");
+        alert("Please wait 2 minutes before generating a new code.");
         return;
       }
 
       if (isSubmitting) {
-        alert("Please wait for the code before trying to request again.");
+        alert("Please wait for the code before requesting again.");
         return;
       }
 
-      if (!c.value) {
-        a.innerHTML = '<a style="color:red;font-weight:bold">Enter your WhatsApp number with a country code</a><br><br>';
-      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid number format</a><br><br>';
+      if (!c.value || c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<p style="color:red;font-weight:bold">Please enter a valid WhatsApp number.</p>';
       } else {
         isSubmitting = true;
 
-        const bc = c.value.replace(/[^0-9]/g, "");
-        let bb = "";
-        let bbc = "";
-        const cc = bc.split('');
-        cc.map(a => {
-          bbc += a;
-          if (bbc.length == 3) {
-            bb += " " + a;
-          } else if (bbc.length == 8) {
-            bb += " " + a;
-          } else {
-            bb += a;
-          }
-        });
-
-        c.type = "text";
-        c.value = "+" + bb;
-        c.style = "color:black;font-size:22px";
-        a.innerHTML = '<a style="color:purple;font-size:22px;font-weight:bold">Generating Code...</a><br><br>';
+        const phone = c.value.replace(/[^0-9]/g, "");
+        a.innerHTML = '<p style="color:purple;font-weight:bold">Generating Code...</p>';
 
         try {
-          let { data } = await axios(`/pair?phone=${bc}`);
+          const res = await fetch(`/pair?phone=${phone}`);
+          const data = await res.json();
           let code = data.code || "Service Unavailable";
-          a.innerHTML = '<font id="copy" onclick="Copy()" style="color:blue;font-weight:bold" size="5">YOUR CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+          a.innerHTML = `<p id="copy" onclick="Copy()" class="copy-style">YOUR CODE: <span style="color:white">${code}</span></p>`;
           isCodeDisplayed = true;
 
           setTimeout(() => {
             isCodeDisplayed = false;
           }, 120000);
-        } catch (error) {
-          console.error("Error fetching code:", error);
-          a.innerHTML = '<a style="color:red;font-weight:bold">Failed to generate code. Please try again later.</a><br><br>';
+        } catch (err) {
+          console.error(err);
+          a.innerHTML = '<p style="color:red;font-weight:bold">Error generating code. Try again later.</p>';
         } finally {
           isSubmitting = false;
         }
       }
     });
 
-    document.getElementById("play-btn").addEventListener("click", () => {
-      const audio = document.getElementById("audio-player");
-      audio.play();
+    const playBtn = document.getElementById("play-btn");
+    const audioPlayer = document.getElementById("audio-player");
+    let isPlaying = false;
+
+    playBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        audioPlayer.play();
+        playBtn.innerText = "Pause Song";
+        isPlaying = true;
+      } else {
+        audioPlayer.pause();
+        playBtn.innerText = "Play Song";
+        isPlaying = false;
+      }
     });
   </script>
+
 </body>
 </html>
