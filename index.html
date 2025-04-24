@@ -1,196 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HANSTZ PAIR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Graduate', sans-serif;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      background: #111;
-      font-family: 'Roboto', sans-serif;
-      color: white;
-      overflow: hidden;
-      position: relative;
+      flex-direction: column;
+      min-height: 100vh;
+      background: black;
     }
 
-    /* Background Particles */
-    #particles-js {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
       z-index: -1;
     }
 
-    /* Frame */
-    .frame {
-      width: 90%;
-      max-width: 400px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      backdrop-filter: blur(8px);
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      padding: 30px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-      position: relative;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      max-width: 400px;
+      width: 90%;
+      z-index: 1;
     }
 
-    /* Typing effect with smooth right to left at 64fps */
-    .typing-effect {
-      font-size: 18px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-      display: inline-block;
-      animation: typing 10s steps(50) infinite, randomColor 10s linear infinite;
+    h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #ffccff;
+      text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc;
     }
 
-    /* Smooth typing animation */
-    @keyframes typing {
-      0% { width: 0%; }
-      100% { width: 100%; }
+    .input-container {
+      display: flex;
+      background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffff);
+      border-radius: 20px;
+      padding: 5px;
+      animation: pulse 3s infinite ease-in-out;
     }
 
-    /* Random color effect */
-    @keyframes randomColor {
-      0% { color: #FF4500; }
-      25% { color: #4caf50; }
-      50% { color: #1e90ff; }
-      75% { color: #ff9800; }
-      100% { color: #9c27b0; }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 10px #ff00cc, 0 0 20px #3333ff, 0 0 30px #00ffff;
+      }
+      50% {
+        box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00cc, 0 0 40px #3333ff;
+      }
     }
 
-    /* 3D Button Styles */
-    .btn {
-      padding: 12px;
-      font-size: 14px;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
+    .input-container input {
+      flex: 3;
+      padding: 15px;
       border: none;
-      border-radius: 10px;
+      border-radius: 20px 0 0 20px;
+      background-color: #000000cc;
       color: white;
-      background-color: #4caf50;
-      transition: background-color 3.6s ease, box-shadow 0.6s ease, transform 0.6s ease;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-      transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+      font-size: 16px;
+      outline: none;
     }
 
-    /* Hover effect to make buttons look 3D */
-    .btn:hover {
-      transform: perspective(500px) rotateX(10deg) rotateY(10deg);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    .input-container button {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      background: #00ffcc;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    /* Button grid */
-    .button-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+    .input-container button:hover {
+      background: #ff66ff;
+      color: white;
+    }
+
+    #loading-spinner {
+      margin-top: 10px;
+      display: none;
+    }
+
+    .fa-spinner {
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #pair {
       margin-top: 15px;
     }
 
-    /* 3D Button random color change */
-    @keyframes buttonColorChange {
-      0% { background-color: #FF4500; }
-      25% { background-color: #4caf50; }
-      50% { background-color: #1e90ff; }
-      75% { background-color: #ff9800; }
-      100% { background-color: #9c27b0; }
+    #play-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      background: #6600ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #6600ff;
+      transition: 0.3s;
     }
 
+    #play-btn:hover {
+      background: #ff00cc;
+      box-shadow: 0 0 25px #ff00cc;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 10px;
+      text-align: center;
+      color: #ccc;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
-  <div id="particles-js"></div>
+  <video autoplay muted loop id="background-video">
+    <source src="https://files.catbox.moe/lso28c.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
 
-  <div class="frame">
-    <div class="typing-effect">
-      <span>WELCOME TO THE HANS_TECH</span>
+  <div class="container">
+    <h3>🧋 HANS PAIR SITE 🧋</h3>
+    <p>Enter your phone number with country code:</p>
+    <div class="input-container">
+      <input placeholder="+25473229×××" type="number" id="number" />
+      <button id="submit">Code</button>
     </div>
-
-    <div class="button-container">
-      <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
-      <button onclick="window.open(`https://github.com/Mrhanstz/HANS-XMD_V3`)" class="btn">HANS-XMD_V3</button>
-      <button onclick="window.open(`https://github.com/Mrhanstz/VORTEX-XMD`)" class="btn">VORTEX-XMD-BOT</button>
-      <button onclick="window.open(`https://www.youtube.com/@HANSTZ-TECH`)" class="btn">YOUTUBE</button>
-      <button onclick="window.open(`https://wa.me/+255756530143`)" class="btn">CONTACT</button>
-      <button onclick="window.open(`https://whatsapp.com/channel/0029VasiOoR3bbUw5aV4qB31`)" class="btn">Channel-2</button>
+    <div id="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
     </div>
+    <main id="pair"></main>
+    <button id="play-btn">Play Song</button>
+  </div>
 
-  
+  <audio id="audio-player">
+    <source src="https://files.catbox.moe/6xwyjs.m4a" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <footer>
+    HANS-XMD MADE BY HANS
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
-    // Initialize ParticlesJS
-    particlesJS('particles-js', {
-      "particles": {
-        "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#FF4500" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000" } },
-        "opacity": { "value": 0.4, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1 } },
-        "size": { "value": 5, "random": true, "anim": { "enable": true, "speed": 10, "size_min": 0.1 } },
-        "line_linked": { "enable": true, "distance": 120, "color": "#FF4500", "opacity": 0.3, "width": 1 },
-        "move": { "enable": true, "speed": 5, "random": true }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } }
-      },
-      "retina_detect": true
-    });
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+    let isSubmitting = false;
+    let isCodeDisplayed = false;
 
-    // Function to change button colors smoothly with mix of last color
-    function getRandomColor() {
-      const colors = ["#FF4500", "#4caf50", "#1e90ff", "#ff9800", "#9c27b0", "#f44336", "#00bcd4", "#ffeb3b"];
-      return colors[Math.floor(Math.random() * colors.length)];
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace(' ', ''));
+      obj.innerText = "CODE COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      obj.size = "5";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:black;font-weight-bold";
+        obj.size = "5";
+      }, 500);
     }
 
-    // Function to apply unique colors to each button
-    function changeButtonColors() {
-      const buttons = document.querySelectorAll('.btn');
-      buttons.forEach(button => {
-        const newColor = getRandomColor();
-        button.style.transition = "background-color 3.6s ease";
-        button.style.backgroundColor = newColor;
-      });
-    }
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
 
-    // Change button colors every 3.6 seconds with different colors for each button
-    setInterval(changeButtonColors, 3600);
+      if (isCodeDisplayed) {
+        alert("Please wait for 2 minutes before requesting a new code.");
+        return;
+      }
 
-    // Background music logic
-    const audio = document.getElementById('background-audio');
+      if (isSubmitting) {
+        alert("Please wait for the code before trying to request again.");
+        return;
+      }
 
-    // Play audio automatically when the page loads
-    window.addEventListener("load", () => {
-      audio.play().catch(error => {
-        console.log("Autoplay blocked: User interaction needed");
-        // Try again after a short delay if autoplay is blocked
-        setTimeout(() => audio.play(), 1000);
-      });
+      if (!c.value) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Enter your WhatsApp number with a country code</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid number format</a><br><br>';
+      } else {
+        isSubmitting = true;
+
+        const bc = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = bc.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style = "color:black;font-size:22px";
+        a.innerHTML = '<a style="color:purple;font-size:22px;font-weight:bold">Generating Code...</a><br><br>';
+
+        try {
+          let { data } = await axios(`/pair?phone=${bc}`);
+          let code = data.code || "Service Unavailable";
+          a.innerHTML = '<font id="copy" onclick="Copy()" style="color:blue;font-weight:bold" size="5">YOUR CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+          isCodeDisplayed = true;
+
+          setTimeout(() => {
+            isCodeDisplayed = false;
+          }, 120000);
+        } catch (error) {
+          console.error("Error fetching code:", error);
+          a.innerHTML = '<a style="color:red;font-weight:bold">Failed to generate code. Please try again later.</a><br><br>';
+        } finally {
+          isSubmitting = false;
+        }
+      }
     });
 
-    // Allow user interaction to trigger audio if autoplay is blocked
-    document.addEventListener("click", () => {
-      audio.play().catch(error => console.log("Autoplay still blocked, waiting for user interaction"));
+    document.getElementById("play-btn").addEventListener("click", () => {
+      const audio = document.getElementById("audio-player");
+      audio.play();
     });
-
   </script>
-
 </body>
 </html>
