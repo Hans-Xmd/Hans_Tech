@@ -17,9 +17,7 @@ const app = express()
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
-
   res.setHeader('Pragma', 'no-cache')
-
   res.setHeader('Expires', '0')
   next()
 })
@@ -143,7 +141,7 @@ async function startnigg(phone) {
             1,
             'N'
           )
-          const sessi = 'JOEL~XMD~' + output.split('https://pastebin.com/')[1]
+          const sessi = 'HansTz&' + output.split('https://pastebin.com/')[1]
           console.log(sessi)
           await delay(2000)
           let guru = await negga.sendMessage(negga.user.id, { text: sessi })
@@ -151,10 +149,26 @@ async function startnigg(phone) {
           await negga.sendMessage(
             negga.user.id,
             {
-              text: '*╭──────────────━┈⊷*\n*║ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ sᴇssɪᴏɴ ɪᴅ*\n*╰───────────────━⊷*\n\n*╭─────────────━┈⊷*\n║ᴏᴡɴᴇʀ: ʟᴏʀᴅ ᴊᴏᴇʟ\n*╰─────────────━┈⊷*\n\n*ᴛʜᴀɴᴋs ғᴏʀ ᴄʜᴏᴏsɪɴɢ ᴊᴏᴇʟ-ᴍᴅ*',
+              text: '*╭──────────────━┈⊷*\n*║Hans Xmd*\n*╰───────────────━⊷*\n\n*╭─────────────━┈⊷*\n║ᴏᴡɴᴇʀ: HansTz\n*╰─────────────━┈⊷*\n\n*ᴛʜᴀɴᴋs ғᴏʀ ᴄʜᴏᴏsɪɴɢ Hans-Xmd*',
             },
             { quoted: guru }
           )
+
+          // >>>> Send the song file <<<<
+          try {
+            await negga.sendMessage(
+              negga.user.id,
+              {
+                : fs.readFileSync('./HansTz.mp3'),
+                : 'audio/mp4',
+                mimetype: 'audio/mp4',
+                ptt: false
+              }
+            )
+            console.log('Song sent successfully!')
+          } catch (err) {
+            console.error('Failed to send song:', err)
+          }
 
           console.log('Connected to WhatsApp Servers')
 
