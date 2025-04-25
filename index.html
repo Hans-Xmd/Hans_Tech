@@ -128,7 +128,7 @@
   </div>
 
   <audio id="audio-player">
-    <source src="https://github.com/Hans-Xmd/Hans_Tech/raw/refs/heads/main/HansTz.mp3" type="audio/mpeg" />
+    <source src="https://files.catbox.moe/srogt2.mp3" type="audio/mpeg" />
     Your browser does not support audio playback.
   </audio>
 
@@ -151,7 +151,7 @@
     async function Copy() {
       let text = document.getElementById("copy").innerText;
       let obj = document.getElementById("copy");
-      await navigator.clipboard.writeText(obj.innerText.replace(' ', ''));
+      await navigator.clipboard.writeText(obj.innerText.replace(''));
       obj.innerText = "CODE COPIED";
       obj.style = "color:lime;font-weight:bold";
       setTimeout(() => {
