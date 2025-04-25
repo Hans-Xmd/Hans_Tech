@@ -1,0 +1,20 @@
+{
+  "name": "HANS-XMD_V3",
+  "description": "Javascript WhatsApp bot made by HansTz TᴇᴄʜX",
+  "logo": "https://raw.githubusercontent.com/Mrhanstz/HansTz-Sever/refs/heads/main/Database/HansTz7.jpg",
+  "keywords": ["HANS-XMD_V3"],
+  "success_url": "/",
+    "stack": "container",
+  "env": {
+    }
+
+},
+
+     "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+        }
+     ],
+  "stack": "heroku-24"
+}
+
