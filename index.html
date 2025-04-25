@@ -116,15 +116,15 @@
 <body>
 
   <div class="card">
-    <h1 id="title"> HANS-TZ_TECH-PAIR </h1>
+    <h1 id="title">HANS_TECH PAIR SITE</h1>
     <p>Enter your WhatsApp number with country code:</p>
     <div style="display: flex; margin-top: 15px;">
-      <input type="number" id="number" placeholder="+255..." />
+      <input type="number" id="number" placeholder="+254..." />
       <button id="submit">Code</button>
     </div>
     <div id="pair"></div>
     <button id="play-btn">Play Song</button>
-    <footer>THANKS FOR CHOOSING</footer>
+    <footer>HANS-XMD_V3</footer>
   </div>
 
   <audio id="audio-player">
@@ -151,7 +151,7 @@
     async function Copy() {
       let text = document.getElementById("copy").innerText;
       let obj = document.getElementById("copy");
-      await navigator.clipboard.writeText(obj.innerText.replace(''));
+      await navigator.clipboard.writeText(obj.innerText.replace(' ', ''));
       obj.innerText = "CODE COPIED";
       obj.style = "color:lime;font-weight:bold";
       setTimeout(() => {
@@ -162,11 +162,6 @@
 
     b.addEventListener("click", async (e) => {
       e.preventDefault();
-
-      if (isCodeDisplayed) {
-        alert("Please wait 2 minutes before generating a new code.");
-        return;
-      }
 
       if (isSubmitting) {
         alert("Please wait for the code before requesting again.");
@@ -187,10 +182,6 @@
           let code = data.code || "Service Unavailable";
           a.innerHTML = `<p id="copy" onclick="Copy()" class="copy-style">YOUR CODE: <span style="color:white">${code}</span></p>`;
           isCodeDisplayed = true;
-
-          setTimeout(() => {
-            isCodeDisplayed = false;
-          }, 120000);
         } catch (err) {
           console.error(err);
           a.innerHTML = '<p style="color:red;font-weight:bold">Error generating code. Try again later.</p>';
