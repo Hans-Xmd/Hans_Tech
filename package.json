@@ -6,7 +6,9 @@
     "node" : ">=20.0.0"
     },
     "scripts": {
-    "start": "node HansTz.js"
+    "start": "pm2 start index.js --deep-monitoring --attach --name HansXmd",
+    "stop": "pm2 stop HansXmd",
+    "restart": "pm2 restart HansXmd"
   },
   "author": "HansTech",
    "license": "",
