@@ -1,1 +1,1 @@
-web: node index.js && node body.js
+web: node HansTz.js && node index.js
